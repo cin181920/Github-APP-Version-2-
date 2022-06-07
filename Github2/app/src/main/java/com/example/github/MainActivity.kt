@@ -7,15 +7,20 @@ import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.CompoundButton
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.github.databinding.ActivityMainBinding
-import java.security.Key
+import com.example.github.databinding.ActivityThemeSettingBinding
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     private lateinit var viewModel: MainViewModel
     private lateinit var adapter: UserAdapter
+    private  lateinit var bindingSetting: ActivityThemeSettingBinding
+    private lateinit var viewModel2: SettingViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,7 +112,5 @@ class MainActivity : AppCompatActivity() {
 
       return  super.onOptionsItemSelected(item)
     }
-
-
 
 }

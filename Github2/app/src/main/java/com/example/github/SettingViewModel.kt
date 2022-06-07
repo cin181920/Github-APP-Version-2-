@@ -1,22 +1,17 @@
 package com.example.github
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
 class SettingViewModel(private val pref: SettingPreferences) : ViewModel() {
 
-    fun getTheme() = pref.getThemeSetting().asLiveData()
-
-    fun saveTheme(isDark: Boolean) {
-        viewModelScope.launch {
-            pref.saveThemeSetting(isDark)
-        }
+    fun getThemeSettings(): LiveData<Boolean> {
+        return pref.getThemeSetting().asLiveData()
     }
 
-    class Factory(private val pref: SettingPreferences) : ViewModelProvider.NewInstanceFactory() {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T = SettingViewModel(pref) as T
+    fun saveThemeSettings(isDarkModeActive: Boolean) {
+        viewModelScope.launch {
+            pref.saveThemeSetting(isDarkModeActive)
+        }
     }
 }
